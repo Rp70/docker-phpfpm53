@@ -55,12 +55,19 @@ RUN set -ex && \
 	&& echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini \
   \
 	&& docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-  && docker-php-ext-install zip gmp bcmath gd gettext imap intl mysqli pspell recode tidy xsl \
+  && docker-php-ext-install zip bcmath gd gettext imap intl mysqli pspell recode tidy xsl \
   \
   #&& docker-php-source extract \
   	&& cd /usr/src/php/ext \
   	\
-    && curl -fsSL 'http://pecl.php.net/get/imagick' -o imagick.tar.gz \
+		&& curl -fsSL http://pecl.php.net/get/APC -o apc.tar.gz \
+    && mkdir -p apc \
+    && tar -xf apc.tar.gz -C apc --strip-components=1 \
+		&& docker-php-ext-configure apc --enable-apc \
+		&& docker-php-ext-install apc \
+    && rm -r apc.tar.gz apc \
+  	\
+    && curl -fsSL http://pecl.php.net/get/imagick -o imagick.tar.gz \
     && mkdir -p imagick \
     && tar -xf imagick.tar.gz -C imagick --strip-components=1 \
 		&& docker-php-ext-configure imagick --enable-imagick \
