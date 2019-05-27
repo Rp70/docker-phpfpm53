@@ -49,6 +49,8 @@ RUN set -ex && \
 		libkrb5-dev libc-client2007e-dev krb5-multidev libpam0g-dev libssl-dev \
 		\
 		libpspell-dev librecode-dev libtidy-dev libxslt1-dev libgmp-dev libmemcached-dev zip unzip zlib1g-dev \
+		\
+		libicu-dev
 	\
 	# sendmail setup with SSMTP for mail().
 	&& echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
