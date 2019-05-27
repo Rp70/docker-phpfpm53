@@ -28,7 +28,7 @@ RUN set -ex && \
 	# ls -lah /tmp/cloudflare* && \
 	apt-get update -y && \
 	apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
-		cron nginx memcached supervisor \
+		#cron nginx memcached supervisor \
 		\
 		# for sending mail via PHP.
 		ssmtp bsd-mailx \
