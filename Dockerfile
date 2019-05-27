@@ -56,11 +56,17 @@ RUN set -ex && \
   \
   && docker-php-ext-configure bcmath --enable-bcmath \
   && docker-php-ext-configure gd \
-		--with-freetype-dir=/usr/lib/x86_64-linux-gnu \
-		--with-jpeg-dir=/usr/lib/x86_64-linux-gnu \
-		--with-webp-dir=/usr/lib/x86_64-linux-gnu \
-		--with-png-dir=/usr/lib/x86_64-linux-gnu \
-		--with-xpm-dir=/usr/lib/x86_64-linux-gnu \
+		--with-freetype \
+		--with-jpeg \
+		--with-webp \
+		--with-png \
+		--with-xpm \
+  # && docker-php-ext-configure gd \
+	# 	--with-freetype-dir=/usr/lib/x86_64-linux-gnu \
+	# 	--with-jpeg-dir=/usr/lib/x86_64-linux-gnu \
+	# 	--with-webp-dir=/usr/lib/x86_64-linux-gnu \
+	# 	--with-png-dir=/usr/lib/x86_64-linux-gnu \
+	# 	--with-xpm-dir=/usr/lib/x86_64-linux-gnu \
 	#&& docker-php-ext-configure gd \
   && docker-php-ext-configure gmp --with-gmp \
 	&& docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
