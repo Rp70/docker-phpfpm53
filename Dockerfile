@@ -55,7 +55,7 @@ RUN set -ex && \
 	&& echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini \
   \
 	&& docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-  && docker-php-ext-install zip gmp bcmath gd gettext imap intl mysqli opcache pspell recode tidy xsl \
+  && docker-php-ext-install zip gmp bcmath gd gettext imap intl mysqli pspell recode tidy xsl \
   \
   #&& docker-php-source extract \
   	&& cd /usr/src/php/ext \
@@ -67,10 +67,17 @@ RUN set -ex && \
 		&& docker-php-ext-install imagick \
     && rm -r imagick.tar.gz imagick \
   	\
-		&& git clone https://github.com/websupport-sk/pecl-memcache memcache \
+		&& curl -fsSL http://pecl.php.net/get/memcache -o memcache.tar.gz \
+    && mkdir -p memcache \
+    && tar -xf memcache.tar.gz -C memcache --strip-components=1 \
 		&& docker-php-ext-configure memcache --enable-memcache \
 		&& docker-php-ext-install memcache \
-		&& rm -r memcache \
+    && rm -r memcache.tar.gz memcache \
+		# \
+		# && git clone https://github.com/websupport-sk/pecl-memcache memcache \
+		# && docker-php-ext-configure memcache --enable-memcache \
+		# && docker-php-ext-install memcache \
+		# && rm -r memcache \
 #		\
   #&& docker-php-source delete \
   && true
