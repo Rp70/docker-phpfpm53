@@ -50,7 +50,7 @@ RUN set -ex && \
 		\
 		libpspell-dev librecode-dev libtidy-dev libxslt1-dev libgmp-dev libmemcached-dev zip unzip zlib1g-dev \
 		\
-		libicu-dev
+		libicu-dev \
 	\
 	# sendmail setup with SSMTP for mail().
 	&& echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
