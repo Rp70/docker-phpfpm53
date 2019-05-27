@@ -54,7 +54,7 @@ RUN set -ex && \
 	&& echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
 	&& echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini \
   \
-  && docker-php-ext-install zip gmp bcmath gd gettext imap intl mysqli pspell recode tidy xsl \
+  && docker-php-ext-install zip bcmath gd gettext imap intl mysqli pspell recode tidy xsl \
   \
   #&& docker-php-source extract \
   	&& cd /usr/src/php/ext \
