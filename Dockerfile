@@ -55,8 +55,13 @@ RUN set -ex && \
 	&& echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini \
   \
   && docker-php-ext-configure bcmath --enable-bcmath \
-  #&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-webp-dir=/usr/include --with-png-dir=/usr/include --with-xpm-dir=/usr/include/X11 \
-	&& docker-php-ext-configure gd \
+  && docker-php-ext-configure gd \
+		--with-freetype-dir=/usr/lib/x86_64-linux-gnu \
+		--with-jpeg-dir=/usr/lib/x86_64-linux-gnu \
+		--with-webp-dir=/usr/lib/x86_64-linux-gnu \
+		--with-png-dir=/usr/lib/x86_64-linux-gnu \
+		--with-xpm-dir=/usr/lib/x86_64-linux-gnu \
+	#&& docker-php-ext-configure gd \
   && docker-php-ext-configure gmp --with-gmp \
 	&& docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
   && docker-php-ext-configure zip --enable-zip \
