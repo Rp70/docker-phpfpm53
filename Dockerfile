@@ -33,7 +33,7 @@ RUN set -ex && \
 		# for sending mail via PHP.
 		ssmtp bsd-mailx \
 		\
-		gosu sudo \
+		#gosu sudo \
 		\
 		# This provides: ps, top, uptime, pkill, watch, etc...
 		# Reference: https://packages.ubuntu.com/xenial/amd64/procps/filelist
