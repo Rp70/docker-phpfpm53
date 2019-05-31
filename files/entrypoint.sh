@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e
 
+echo "Overwriting files (if any)"
+if [ -d /entrypoint/overwrite ]; then
+	cp -fvab /entrypoint/overwrite/* /
+fi
+echo
+
+
 if [ -e /entrypoint-hook-start.sh ]; then
 	. /entrypoint-hook-start.sh
 fi
